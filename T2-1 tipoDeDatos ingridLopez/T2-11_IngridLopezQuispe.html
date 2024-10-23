@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ingrid López">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Crea una página que juegue con el usuario a adivinar un número. 
+
+La página genera un número del 1 al 100.
+La página pregunta al usuario cuál cree que es el número.
+Si el usuario falla, se indica si es menor o mayor y se le vuelve a preguntar.
+Si el usuario acierta, se felicita y se indica que ha acabado el juego, indicando el número de intentos.
+Si el usuario escribe algo que no es un número, se indica el error y vuelve a preguntar.
+Si el usuario cancela en algún momento, el juego termina indicando que se ha cancelado.
+Cuando acaba el juego de cualquiera de las formas, se permite volver a jugar mediante un cuadro de confirmación.
+Muestra por console.log el número calculado para poder comprobar el acierto.
+        */
+
+        //La página genera un número del 1 al 100.
+
+        function juego() {
+            
+            let aleatorio= Math.floor(Math.random()*100)+1;
+        console.log(aleatorio);
+        
+        //La página pregunta al usuario cuál cree que es el número.
+
+        let acierto = false;
+        let adivinar;
+        let intentos = 0;
+        let juegoCancelado = false;
+
+        do {
+            adivinar = prompt('adivina un número entre el 1 y el 100??');
+
+            if (adivinar === null) {// uso null para que identifique la tecla cancelar y termine el juego
+                alert('juego cancelado')
+                juegoCancelado = true;// al cancelar la variable se convierte en true
+                break;// rompe el bucle y sale del juego
+            }
+            adivinar = parseInt(adivinar);// parseamos a numero entero para entrar las condicionales
+
+            if (!isNaN(adivinar)) {// si es un numero
+                intentos++;// sumamos los intentos
+
+            if (adivinar > aleatorio) {
+                alert('el numero a adivinar es menor')
+                
+            }else if (adivinar < aleatorio) {
+                alert(' el numero aleatorio es mayor')
+                
+            }else {
+                
+                alert(`felicidades has acertado el numero secreto que es : ${adivinar}  en ${intentos} intentos ¡¡¡ juego a finalizado !!!`);
+                acierto= true;// acierto se convierte en true y temina el juego
+                
+            }
+        } else {// si escribe cualquier cosa que no sea un numero, te salta el alert y vuelve a pedirte que ingreses el numero a adivinar
+            alert('error tiene que ser un numero')
+        }
+        } while (!acierto && !juegoCancelado);// el bucle se sigue realizando mientras no se de a cancelar el juego o se acierte el numero
+
+        /*Cuando acaba el juego de cualquiera de las formas, se permite volver a jugar mediante un cuadro de confirmación.
+        Muestra por console.log el número calculado para poder comprobar el acierto.  */
+
+        let jugarNuevamente= confirm('quieres jugar nuevamente ?')// uso la funcion confirm ya que me muestra un cuadro con 2 opciones
+                                                            // aceptar = true  o  cancelar = false  y el resultado se guarda en la variable
+
+        if (jugarNuevamente) {// si el usuario le da a aceptar llamamos a la funcion juego()
+            juego();// reiniciamos nuevamente el juego ya que el usuario dió a aceptar
+        }else{// si da a cancelar que no desea volver a jugar le mostramos el mensaje del alert
+            alert(' gracias por jugar, Hasta luego');
+        }
+        }
+
+        juego();// llamada a la función, principio del juego
+       
+        
+    </script>
+</body>
+</html>

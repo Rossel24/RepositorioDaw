@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2-12 Triángulos</title>
+</head>
+<body>
+    <script>
+
+ // funcion para comprobar si el número es entero
+
+ function comprobadorEnterosPositivos(numero) {
+
+return Number.isInteger(numero) && numero > 0;
+
+}
+
+// funcion para pintar triángulos
+
+function pintarTriangulos(numero) {
+
+    // bucle principal que itera desde 1 hasta el numero indicado por el usuario
+for (let i = 1; i <= numero; i++) {
+    // se inicializa una cadena vacía para la fila actual del triángulo
+    let filas = '';// esta variable se usara para construir la fila de asteriscos de la fila actual, se inicializa en cada iteracion
+                    
+    // bucle que se utiliza para construir la fila de los asteriscos, el numero de iteracion sera ifual al numero de filas de " i "
+    for (let j = 0; j <i; j++) {// este bucle interno se utiliza para pintar los asteriscos dentro de cada fila
+        filas += '*  ';// agrga un asterisco y un espacio a la cadena fila
+        
+    }console.log(filas);  // imprime la fila pintando los asteriscos en cada vuelta
+    
+}
+}
+
+// La página pide al usuario un número entero positivo.
+
+let numero=parseInt(prompt("Por favor ingrese un numero entero positivo"));
+
+// llamamos a la funcion y paso los parámetros para validar si es numero y pintar el triángulo
+
+if (comprobadorEnterosPositivos(numero)) {// llama a la funcion y comprueba
+pintarTriangulos(numero);// llama a la funcion para pintar el triángulo
+
+// Si el usuario no introduce un número entero positivo, la página no hará nada.
+}else{
+console.log("no ingresaste un numero entero positivo"); // termina 
+}
+    </script>
+</body>
+</html>

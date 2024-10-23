@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ingrid Lopez">
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea 3-1</title>
+</head>
+
+<body>
+    <h3>Cifrado César</h3>
+
+
+    <script>
+
+        function cifradoPolialfabetico(texto, clave) {
+            let resultado = '';// en esta variable almacenare el texto cifrado
+            texto = texto.toLowerCase();// se convierte tanto texto como clave a minusculas para poder operar  mejor el cifrado
+            clave = clave.toLowerCase();
+
+            for (let i = 0, j = 0; i < texto.length; i++) {// en el bucle i recorrerá la posicion del texto y j recorrerá la clave
+                let caracter = texto[i];// guardo en cararcter la posicion de i en el texto
+
+                // verifico si el caracter del texto es una letra minuscula entre a y z
+                if (caracter >= 'a' && caracter <= 'z') {
+
+                    // calculo el desplazamiento utilizando la clave
+                    // obtengo el numero en ASCII de la posicion de i en caracter   (caracter.charCodeAt(0) " de 0 a 25, 0 para a, 1 para b ..."
+                    // le resto 97 para convertirlo en un rango del 0 al 25. por ejm si caracter es h es el 104 el ASCII 104-97=7 ( posicion 8 del 0 al 25)
+                    // se obtiene el codigo ASCII de la letra correspondiente de la clave
+                    let desplazamiento = (caracter.charCodeAt(0) - 97 + clave[j % clave.length].charCodeAt(0) - 97) % 26;
+
+                    // con String.fromCharCode  convertimos denuevo a letra
+                    resultado += String.fromCharCode(desplazamiento + 97);
+
+
+                    j++;//aumentamos el valor de j moviendolo al siguiente valor de la clave
+                } else {
+                    // y si no es una letra se añade el mismo carácter 
+                    resultado += caracter;
+                }
+            }
+
+            return resultado;// retorna el texto cifrado
+        }
+
+
+        let texto = prompt("Introduce el texto a cifrar:");
+        let clave = prompt("Introduce la clave de cifrado de varias letras:");
+
+
+        // llamamos a la funcion
+        let textoCifrado = cifradoPolialfabetico(texto, clave);
+        document.write("<h4>Texto original: " + texto + "</h4>");
+        document.write("<h4>Texto cifrado: " + textoCifrado + "</h4>");
+
+    </script>
+</body>
+
+</html>

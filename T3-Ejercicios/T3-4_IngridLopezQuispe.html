@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ingrid Lopez">
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea T3-4</title>
+</head>
+
+<body>
+    <h3>Loteria Primitiva</h3>
+
+
+    <script>
+
+
+        // funcion para generar array del 1 al 49
+        function generarArrayAleatorios() {
+
+            let numeros = [];
+            for (let i = 1; i <= 49; i++) {
+                numeros.push(i);
+
+            }
+            return numeros;
+        }
+
+        // funcion para mezclar el array de numeros
+        function mezclarArray(array) {
+            for (let i = 0; i < 50; i++) { // Cambiar el número de iteraciones si es necesario
+                let index1 = Math.floor(Math.random() * array.length);
+                let index2 = Math.floor(Math.random() * array.length);
+                // se intercambia los elementos
+                [array[index1], array[index2]] = [array[index2], array[index1]];
+            }
+            return array;
+        }
+
+        // Genero el array y luego se mezcla
+        let array = generarArrayAleatorios();
+        console.log("Array original:", array); // Muestro el array antes de mezclar
+        array = mezclarArray(array); // ahora mezclo ezcla el array
+        console.log("Array mezclado:", array); // muestro el array mezclado
+
+    </script>
+</body>
+
+</html>

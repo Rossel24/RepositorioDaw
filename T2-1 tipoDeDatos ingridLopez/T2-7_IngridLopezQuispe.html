@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ingrid Lopez" />
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea 2-8-1</title>
+</head>
+
+<body>
+    <script>
+        /* Pregunta al usuario si desea abrir una cuenta de ahorro.
+           - Si acepta, continúa con el programa. 
+           - Si no, vuelve a preguntar.
+        */
+        let cuenta = false;// creamos esta variable para entrar en bucle hasta que la respuesta sea si
+
+        do {
+            let abrirCuenta = prompt('deseas abrir una cuenta de ahorro ?  si / no' ).toLowerCase();
+            if (abrirCuenta === 'si') {
+                cuenta = true;
+            }else if (abrirCuenta ==='no') {
+                alert('que pena, estas seguro ')
+            }
+        } while (!cuenta);
+        
+        
+        
+        let ahorro = 0.;
+        /* Solicita al usuario la cantidad positiva que desee ahorrar. */
+
+        let cantiAhorrar;
+        
+        
+        do {
+            cantiAhorrar = parseFloat(prompt('que cantidad positiva quiere ahorrar ??'));
+            if (isNaN(cantiAhorrar) || cantiAhorrar <= 0) {// comprobacion de que se introduzca solo numeros y positivos
+                alert('introduce solo numeros y positivos')
+            }
+            } while (isNaN(cantiAhorrar) || cantiAhorrar <= 0);
+            
+            
+        
+        
+        
+        
+        //let añadir = 0.;
+
+        
+        /* Pregunta al usuario cuánto dinero quiere añadir. 
+        
+           El dinero se añadirá a lo ahorrado.
+           Cuando la hucha haya cumplido el objetivo,
+           se mostrará un texto de objetivo conseguido 
+           con la cantidad ahorrada.
+        */
+
+        do {
+           let añadir = parseFloat(prompt('cuanto dimero quiere añadir ?'));// solicitamos ingrese dinero y parseamos para convertir a numero
+
+           if (isNaN(añadir) || añadir <= 0) {
+            alert ('introduce una cantidad valida para añadir');
+           } else {
+            ahorro += añadir;// sumamos y acumulamos a ahorro las cantidades añadidas
+            alert(`llevas ahorrado ${ahorro}`);
+           }
+
+            
+            
+        } while (cantiAhorrar > ahorro);// bucle mientras no se cumpla el objetivo de ahorro
+        
+        alert (`has conseguido tu objetivo, lograste ahorrar ${ahorro}`);
+        
+    
+    </script>
+</body>
+
+</html>

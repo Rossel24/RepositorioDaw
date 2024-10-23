@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ingrid Lopez">
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea T3-3</title>
+</head>
+
+<body>
+    <h3>Mostrar Asteriscos</h3>
+
+
+    <script>
+        /* Crea un código que genere un array con 20 números aleatorios del 1 al 50.
+    
+    Recorre el array mostrando tantos asteriscos como se indique en el número de cada elemento.
+    
+    Muestra antes de los asteriscos la posición del array y el número que contiene.  */
+
+        function generarNumeroAleatorio() {
+            let aleatorios = [];
+            for (let i = 0; i < 20; i++) {
+
+                let numerosAleatorio = Math.floor(Math.random() * 50) + 1;// genero el aleatorio entre 1 y 50
+                aleatorios.push(numerosAleatorio);// on push añado los aleatorios generados a la variable
+            }
+            return aleatorios;
+
+        }
+        // funcion para mostrar los asteriscos
+        function mostrarAsteriscos(arrayNumeros) {
+            for (let i = 0; i < arrayNumeros.length; i++) {
+                let numero = arrayNumeros[i]; // guardo en la variable la posicion actual de i dentro de arrayNumeros
+                let asteriscos = '*'.repeat(numero); // Crea una cadena de asteriscos y lo repite las veces almacenada en la variable numero
+
+                // muestro por consola la posición, el número y pinto los asteriscos
+                console.log(`Posicion array ${i}: aleatorio ${numero}  ${asteriscos}`);
+            }
+        }
+
+        let arrayNumeros = generarNumeroAleatorio();
+        mostrarAsteriscos(arrayNumeros);
+
+    </script>
+</body>
+
+</html>

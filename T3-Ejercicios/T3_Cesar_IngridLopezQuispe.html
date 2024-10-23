@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T3-1 Cifrado Cesar</title>
+</head>
+<body>
+    
+  <h3>Cifrado César</h3>
+  <script>
+
+  function cifradoCesar(texto,clave) {
+
+  let textoCifrado="";// creamos esta variable donde almacenaremos el texto ya cifrado
+
+  for (let i = 0; i< texto.length; i++) {// recorremos con el bicle caracter a caracter del texto dado
+      let caracter = texto[i];// almacenamos en la variable el valor de [i] en cada iteración
+
+      //comprobamos si caracter es una letra minucula o mayuscula segun ta tabla Ascii
+      if ((caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z')) {
+      
+      //charCodeAt devuelve el valor unicode del caracter en la ubicación especificada, si no hay devuelve Nan
+      // en variable cod almacenamos el codigo Ascii del caracter actual de i
+      let cod=texto.charCodeAt(i);
+
+      // comprobamos si es mayuscula
+      if (cod >=65 && cod<=90) {
+
+      // guardamos en la variable el índice del carácter en el alfabeto para letras mayúsculas
+      let indiceMayus=(texto.charCodeAt(i)-65+clave)%26;
+
+      // Obtener el carácter cifrado sumando el índice al código ASCII de 'A'
+      caracter=String.fromCharCode(indiceMayus+65);
+      
+      }else if (cod>=97 && cod<=122) {
+          let indiceMinus=(texto.charCodeAt(i)-97+clave)%26;
+
+          caracter=String.fromCharCode(indiceMinus+97);
+          
+      }
+      }
+      //almacenamos en la variable los caracteres
+      textoCifrado +=caracter;
+  
+}
+      //retornamos el texto cifrado
+  return textoCifrado;
+
+}
+
+  //creamos variable para el texto
+  let textoOrginal= prompt('introduce un texto a cifrar');
+  // pasmos la clave
+  let clave= parseInt(prompt('introduce la clave'));
+
+  // elmacenamos en la variable el texto encriptado que devolverá la función
+  let textoEncriptado= cifradoCesar(textoOrginal,clave);
+
+  // mostramos por pantalla
+  document.write("<h4> el texto original es: "+ textoOrginal+"</h4><br>");
+  document.write("<h4>el texto encriptado es: "+textoEncriptado+"</h4>");
+
+
+
+  </script>
+</body>
+</html>

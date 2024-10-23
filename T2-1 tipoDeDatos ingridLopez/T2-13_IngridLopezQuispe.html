@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ingrid Lopez">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 100%;
+            /* para que la tabla ocupe el ancho de la pagina */
+            border-collapse: collapse;
+            /* para eliminar los espacios entre bordes de las celdas */
+        }
+
+        td {
+            border: 1px solid black;
+            /* para pintar un borde a cada celda */
+            padding: 10px;
+            /* con el padding añado espacio dentro de las celdas */
+            /*text-align: center;   Centrar el texto dentro de las celdas  */
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* Crea una página que pinte una tabla en HTML.
+    
+            La página pide al usuario un número entero positivo asignado a filas.
+            
+            La página pide al usuario un número entero positivo asignado a columnas.
+            La página dibujará una tabla con tantas filas y columnas como indique
+            el usuario introduciendo el número natural correspondiente a cada celda.  */
+
+        function esEnteroPositivo(numero) {// funcion para comprobar si un numero es entero y positivo
+            return Number.isInteger(numero) && numero > 0;
+        }
+
+        let numeroFilas;
+        do {// creo el bucle con un condicional por si introduce algo distinto a numero positivo muestre el mensaje y vuelva a pedir el numero
+            numeroFilas = parseInt(prompt('introduce un numero positivo para las filas'));
+            if (!esEnteroPositivo(numeroFilas)) {
+                alert('error debe ingresar un numero entero positivo');
+            }
+        } while (!esEnteroPositivo(numeroFilas));
+
+
+        let numeroColumnas;
+
+        // bucle para el numero de columnas
+        while (!esEnteroPositivo(numeroColumnas)) {
+            numeroColumnas = parseInt(prompt('introduce otro numero entero positivo para las columnas'));
+            if (!esEnteroPositivo(numeroColumnas)) {
+                alert('error debe ingresar un numero entero positivo');
+            }
+        }
+
+
+        // creo la tabla 
+        let tabla = '<table>';// en esta variable creo la estructura de la tabla
+        let contador = 1;// creo un contador que se usara para enumerar las celdas de la tabla de forma secuencial
+
+        // bucle externo que recorre las filas y añade += una nueva fila' <tr>' con cada iteracion
+        for (let i = 1; i <= numeroFilas; i++) {
+            tabla += '<tr>';// inicia una nueva fila
+
+            // bucle interno para recorrer las columnas y añade una nueva celda <td> con el numero actual del contador en cada iteracion
+            for (let j = 1; j <= numeroColumnas; j++) {
+                tabla += `<td> ${contador}</td>`;
+                contador++;// incrementa el contador para numerar secuencialmente despues de cada iteracion
+            }
+            tabla += '</tr>'; // desspues que termina el bucle de las columnas cerramos </tr> las filas
+        }
+        tabla += '</table>'; //cuando los dos bucles han finalizado cerramos la tabla </table>
+
+
+        // insertamos el html de la tabla en el cuerpo del documento actual de la pagina, asi se mostrara 
+        document.body.innerHTML += tabla;
+
+
+
+    </script>
+
+</body>
+
+</html>

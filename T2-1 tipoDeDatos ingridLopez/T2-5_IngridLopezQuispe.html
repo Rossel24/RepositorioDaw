@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="https://iesventura.es/_ies_datos/LOGO_new.jpg">
+    <title>Tarea 2-6.2</title>
+</head>
+
+<body>
+    <script>
+        // Muestra por consola un número aleatorio entre dos dados por el usuario.
+        // Utiliza prompt, console.log, Math.random y operaciones aritméticas.
+
+        let numero1 = prompt('introduce el primer numero');
+        while(isNaN(numero1)){
+            alert('introduce solo numeros')
+        numero1 = prompt('introduce el primer numero')
+
+        }numero1= parseInt(numero1);
+        
+        let numero2= prompt(' introduce el segundo numero');
+
+        while(isNaN(numero2)){
+            alert('introduce solo numeros')
+         numero2= prompt(' introduce el segundo numero')
+
+        }numero2= parseInt(numero2);
+        
+
+       
+        let aleatorio = parseInt(Math.random() * (numero2 - numero1) + numero1);
+        
+        console.log(`el numero1 es  ${numero1} y el numero 2 es  ${numero2}  el numero aleatorio es ${aleatorio}`);
+    </script>
+</body>
+
+</html>
